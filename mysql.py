@@ -2,7 +2,7 @@ import datetime
 import pymysql
 
 
-cnx = pymysql.connect(host='127.0.0.1', user='root', password='root', db='mysql')
+cnx = pymysql.connect(host='127.0.0.1', user='root', password='<password>', db='mysql')
 cursor = cnx.cursor()
 
 query = ("SELECT user, host from mysql.user")
