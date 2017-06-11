@@ -4,7 +4,7 @@ import sys
 from datetime import datetime
 
 # Clear the screen
-#subprocess.call('clear', shell=True)
+subprocess.call('clear', shell=True)
 
 # Ask for input
 remoteServer = input("Enter a remote host to scan: ")
@@ -24,10 +24,15 @@ t1 = datetime.now()
 
 try:
     for port in range(1,1025):
+        st1 = datetime.now()
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         result = sock.connect_ex((remoteServerIP, port))
+        st2 = datetime.now()
+        stotal = st2 - st1
         if result == 0:
-            print("Port {}: 	 Open".format(port))
+            print("Port {}: 	 Open -- Complelted in {}".format(port, stotal))
+        else:
+            print("Port {}:      Close -- Completed in {}".format(port, stotal))
         sock.close()
 
 except KeyboardInterrupt:
